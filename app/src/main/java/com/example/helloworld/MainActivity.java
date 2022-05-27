@@ -5,31 +5,39 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
-public class MainActivity extends AppCompatActivity {
+
+
+public class MainActivity extends AppCompatActivity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Spinner spinner = findViewById(R.id.spinner2);
+        TextView txt = findViewById(R.id.txtspinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.item, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        txt.setText(spinner.getSelectedItem().toString());
+
+
     }
 
     public void onBtnClick (View view){
         TextView txt = findViewById(R.id.textView);
-        TextView txt2 = findViewById(R.id.textView2);
-        TextView txt3 = findViewById(R.id.textView3);
 
-        EditText edtTxtName1 = findViewById(R.id.editTextTextFirstName);
-        EditText edtTxtName2 = findViewById(R.id.editTextTextLastName);
-        EditText edtTxtName3 = findViewById(R.id.editTextTextEmail);
+        EditText edtID = findViewById(R.id.ID);
+        EditText edtAddress = findViewById(R.id.Address);
 
-        txt.setText("First Name: " + edtTxtName1.getText().toString());
-        txt2.setText("Last Name: " + edtTxtName2.getText().toString());
-        txt3.setText("Email: " + edtTxtName3.getText().toString());
+        txt.setText(edtID.getText().toString() + '@' + edtAddress.getText().toString());
 
-        //= findViewById(R.id.editTextTextEmail);
-        //EditText edtTxtName = findViewById(R.id.editTextTextEmail);
 
     }
+
 }
