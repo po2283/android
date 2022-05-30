@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    //이메일 목록
     <string-array name="item">
         <item>address</item>
         <item>gmail.com</item>
